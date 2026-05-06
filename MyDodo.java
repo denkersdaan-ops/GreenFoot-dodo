@@ -18,6 +18,7 @@ public class MyDodo extends Dodo
 
     }
 
+
     /**
      * Move one cell forward in the current direction.
      * 
@@ -125,10 +126,10 @@ public class MyDodo extends Dodo
      */
 
     public boolean canLayEgg( ){
-//        if( onEgg() ){
-            // E
-//        }else{
+        if( onEgg() ){
+            return false;
+        }else{
             return true;
-//        }
+        }
     }  
 }
