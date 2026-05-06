@@ -110,6 +110,7 @@ public class MyDodo extends Dodo
     public void walkToWorldEdgePrintingCoordinates( ){
         while( ! borderAhead() ){
             // print coordinates
+            System.out.println("x:" + getX() + " y:" + getY());
             move();
         }
     }
