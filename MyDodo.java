@@ -52,6 +52,16 @@ public class MyDodo extends Dodo
             return true;
         }
     }
+    
+    public void climbOverFance(){
+        turnLeft();
+        move();
+        turnRight();
+        jump(2);
+        turnRight();
+        move();
+        turnLeft();
+    }
 
     /**
      * Hatches the egg in the current cell by removing
