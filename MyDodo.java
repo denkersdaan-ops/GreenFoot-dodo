@@ -33,6 +33,12 @@ public class MyDodo extends Dodo
             showError( "I'm stuck!" );
         }
     }
+    
+    public void OneCellBackwards(){
+        turnAround();
+        move();
+        turnAround();
+    }
 
     /**
      * Test if Dodo can move forward, (there are no obstructions
