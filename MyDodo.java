@@ -145,6 +145,12 @@ public class MyDodo extends Dodo
             move();
         }
     }
+    
+    public void goBackToStartOfRowAndFaceBack(){
+        turnAround();
+        walkToWorldEdge();
+        turnAround();
+    }
 
     /**
      * Test if Dodo can lay an egg.
