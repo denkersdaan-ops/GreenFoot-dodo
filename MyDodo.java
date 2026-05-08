@@ -151,6 +151,15 @@ public class MyDodo extends Dodo
         walkToWorldEdge();
         turnAround();
     }
+    
+    public void walkToWorldEdgeClimbingOverFances(){
+         while( ! borderAhead() ){
+            if(fenceAhead()){
+                climbOverFance();
+            }
+            move();
+        }
+    }
 
     /**
      * Test if Dodo can lay an egg.
