@@ -174,6 +174,21 @@ public class MyDodo extends Dodo
             move();
         }
     }
+    
+    public void walkToWorldEdgeNoEmptyNest(){
+        //if u start on a nest lay an egg 
+        if(onNest() && canLayEgg()){
+                layEgg();
+        }
+        while(! borderAhead()){
+            move();
+            if(onNest() && canLayEgg()){
+                layEgg();
+            }
+        }
+        
+      
+    }
 
     /**
      * Test if Dodo can lay an egg.
