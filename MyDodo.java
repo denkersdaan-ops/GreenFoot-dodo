@@ -160,6 +160,15 @@ public class MyDodo extends Dodo
         }
     }  
     
+    public void goToEgg(){
+        while(!onEgg()){
+            if(borderAhead() || fenceAhead()){
+                break; // stop when u can't go on
+            }
+            move();
+        }
+    }
+    
     public void turnAround(){
         turnRight();
         turnRight();
