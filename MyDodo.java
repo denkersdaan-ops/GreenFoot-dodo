@@ -140,7 +140,7 @@ public class MyDodo extends Dodo
         }
     }
     
-      public void walkToWorld( ){
+      public void walkToWorldEdge( ){
         while( ! borderAhead() ){
             move();
         }
