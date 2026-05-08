@@ -72,14 +72,10 @@ public class MyDodo extends Dodo
     public boolean grainAhead(){
         move();
         if(onGrain()){
-            turnAround();
-            move();
-            turnAround();
+            OneCellBackwards();
             return true;
         }else{
-            turnAround();
-            move();
-            turnAround();
+            OneCellBackwards();
             return false;
         }
     }
