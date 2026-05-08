@@ -160,6 +160,18 @@ public class MyDodo extends Dodo
             move();
         }
     }
+    
+    public void pickUpGrainAndPrintCoordinates(){
+        while( ! borderAhead() ){
+            // print coordinates
+            if(onGrain()){
+                pickUpGrain();
+            }
+            
+            System.out.println("x:" + getX() + " y:" + getY());
+            move();
+        }
+    }
 
     /**
      * Test if Dodo can lay an egg.
