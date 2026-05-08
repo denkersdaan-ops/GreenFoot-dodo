@@ -139,6 +139,12 @@ public class MyDodo extends Dodo
             move();
         }
     }
+    
+      public void walkToWorld( ){
+        while( ! borderAhead() ){
+            move();
+        }
+    }
 
     /**
      * Test if Dodo can lay an egg.
