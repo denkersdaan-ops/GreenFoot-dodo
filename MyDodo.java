@@ -261,6 +261,19 @@ public class MyDodo extends Dodo
         }
         
     }
+    
+    public void eggTrailToNest(){
+        while(!onNest()){
+            if(eggAhead() || nestAhead()){
+                move();
+            }else{
+                turnRight();
+                if(!eggAhead() && !nestAhead()){
+                   turnAround(); 
+                }
+            }
+        }
+    }
 
     /**
      * Test if Dodo can lay an egg.
