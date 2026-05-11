@@ -163,6 +163,19 @@ public class MyDodo extends Dodo
         }
     }
     
+    public void walkToNestClimbingOverFances(){
+         while( ! onNest() || ! borderAhead()){
+            if(fenceAhead()){
+                climbOverFance();
+            }
+            move();
+        }
+        
+        if(onNest() && canLayEgg()){
+            layEgg();
+        }
+    }
+    
     public void pickUpGrainAndPrintCoordinates(){
         while( ! borderAhead() ){
             // print coordinates
