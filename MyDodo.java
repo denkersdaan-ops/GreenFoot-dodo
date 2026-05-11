@@ -222,8 +222,7 @@ public class MyDodo extends Dodo
         if(fenceAhead()){
             fenceSide = 1;
         }
-        turnRight();
-        turnRight();
+        turnAround();
         if(fenceAhead()){
             fenceSide = 2;
         }
@@ -234,6 +233,18 @@ public class MyDodo extends Dodo
         
         if(fenceSide != 0){
             while(!onEgg()){
+                if(fenceAhead()){
+                    //if there is a fence forward try left
+                    turnLeft();
+                    if(fenceAhead()){
+                        //if fence is also on the left try right 
+                        turnAround();
+                        if(fenceAhead()){
+                            // if there is also a fence to the right turn back
+                            turnRight();
+                        }
+                    }
+                }
                 move();
                 if(fenceSide == 1){
                    turnLeft();
