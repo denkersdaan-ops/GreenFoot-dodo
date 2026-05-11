@@ -59,7 +59,7 @@ public class MyDodo extends Dodo
         }
     }
     
-    public void climbOverFance(){
+    public void climbOverFence(){
         turnLeft();
         move();
         turnRight();
@@ -154,19 +154,19 @@ public class MyDodo extends Dodo
         turnAround();
     }
     
-    public void walkToWorldEdgeClimbingOverFances(){
+    public void walkToWorldEdgeClimbingOverFences(){
          while( ! borderAhead() ){
             if(fenceAhead()){
-                climbOverFance();
+                climbOverFence();
             }
             move();
         }
     }
     
-    public void walkToNestClimbingOverFances(){
+    public void walkToNestClimbingOverFences(){
          while( ! onNest() && ! borderAhead()){
             if(fenceAhead()){
-                climbOverFance();
+                climbOverFence();
             }
              if(onNest() && canLayEgg()){
                 layEgg();
