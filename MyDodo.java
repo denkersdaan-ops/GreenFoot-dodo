@@ -207,6 +207,49 @@ public class MyDodo extends Dodo
         
       
     }
+    
+    /**
+     * walk around the fences
+     * 
+     * 
+     */
+    
+    public void walkAroundFences(){
+        int fenceSide = 0; // 0 is no fence 1 is left and 2 is richt
+        
+        // check if there is a fence and witch side
+        turnLeft();
+        if(fenceAhead()){
+            fenceSide = 1;
+        }
+        turnRight();
+        turnRight();
+        if(fenceAhead()){
+            fenceSide = 2;
+        }
+        
+        turnLeft();
+        
+        // move
+        
+        if(fenceSide != 0){
+            while(!onEgg()){
+                move();
+                if(fenceSide == 1){
+                   turnLeft();
+                   if(fenceAhead()){
+                       turnRight();
+                   }
+                }else{
+                   turnRight();
+                   if(fenceAhead()){
+                       turnLeft();
+                   } 
+                }
+            }
+        }
+        
+    }
 
     /**
      * Test if Dodo can lay an egg.
