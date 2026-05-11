@@ -164,10 +164,15 @@ public class MyDodo extends Dodo
     }
     
     public void walkToNestClimbingOverFances(){
-         while( ! onNest() || ! borderAhead()){
+         while( ! onNest() && ! borderAhead()){
             if(fenceAhead()){
                 climbOverFance();
             }
+             if(onNest() && canLayEgg()){
+                layEgg();
+                break;
+            }
+        
             move();
         }
         
