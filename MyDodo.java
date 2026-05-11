@@ -262,6 +262,54 @@ public class MyDodo extends Dodo
         
     }
     
+        public void solveSolidMaze(){
+        int fenceSide = 0; // 0 is no fence 1 is left and 2 is richt
+        
+        // check if there is a fence and witch side
+        turnLeft();
+        if(fenceAhead()){
+            fenceSide = 1;
+        }
+        turnAround();
+        if(fenceAhead()){
+            fenceSide = 2;
+        }
+        
+        turnLeft();
+        
+        // move
+        
+        if(fenceSide != 0){
+            while(!onNest()){
+                if(fenceAhead()){
+                    //if there is a fence forward try left
+                    turnLeft();
+                    if(fenceAhead()){
+                        //if fence is also on the left try right 
+                        turnAround();
+                        if(fenceAhead()){
+                            // if there is also a fence to the right turn back
+                            turnRight();
+                        }
+                    }
+                }
+                move();
+                if(fenceSide == 1){
+                   turnLeft();
+                   if(fenceAhead()){
+                       turnRight();
+                   }
+                }else{
+                   turnRight();
+                   if(fenceAhead()){
+                       turnLeft();
+                   } 
+                }
+            }
+        }
+        
+    }
+    
     public void eggTrailToNest(){
         while(!onNest()){
             if(eggAhead() || nestAhead()){
