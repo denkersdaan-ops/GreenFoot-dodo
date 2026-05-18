@@ -420,6 +420,9 @@ public class MyDodo extends Dodo
         }
     }  
     
+    /**
+     * move to the first egg it can find.
+     */
     public void goToEgg(){
         while(!onEgg()){
             if(borderAhead() || fenceAhead()){
@@ -428,6 +431,10 @@ public class MyDodo extends Dodo
             move();
         }
     }
+    
+     /**
+     * turn 180 deg by turn right two times.
+     */
     
     public void turnAround(){
         turnRight();
