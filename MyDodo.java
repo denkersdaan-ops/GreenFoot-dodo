@@ -268,8 +268,34 @@ public class MyDodo extends Dodo
                 layEgg();
             }
         }
+    }
+    
+    /**
+     * Walks to edge of the world count egg and go back
+     * 
+     * <p> Initial: Dodo is on West side of world facing East.
+     * <p> Final:   Dodo is on East side of world facing East.
+     *              count all eggs it ran into and shows it.
+     */
+    
+    public void countEggsInRow(){
+        int eggCount = 0;
         
-      
+        int x = getX();
+        int y = getY();
+        int dir = getDirection();
+        if(onEgg()){
+                eggCount++;
+        }
+        while(! borderAhead()){
+            move();
+            if(onEgg()){
+                eggCount++;
+            }
+        }
+        goToLocation(x, y);
+        setDirection(dir);
+        showCompliment("" + eggCount);     
     }
     
     /**
