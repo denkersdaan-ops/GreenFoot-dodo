@@ -457,6 +457,9 @@ public class MyDodo extends Dodo
      * <p> it wil turn even if he is alread on the location but jumbing 0 is the same position
      */
     public void goToLocation(int x, int y){
+        if(!validCoordinates(x, y)){
+            return;
+        }
         int changeX = getX() - x;
         int changeY = getY() - y;
         
@@ -471,4 +474,18 @@ public class MyDodo extends Dodo
         jump((changeY > 0) ? changeY : changeY*-1);
     }
     
+    /**
+     * return true if the coordinates are in the world border
+     */
+    public boolean validCoordinates(int x, int y){
+        if(x >= getWorld().getWidth() || x < 0){
+            showError("Invalid coordinates");
+            return false;
+        }
+        if(y >= getWorld().getHeight() || y < 0){
+            showError("Invalid coordinates");
+            return false;
+        }
+        return true;
+    }
 }
