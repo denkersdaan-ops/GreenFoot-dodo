@@ -15,7 +15,7 @@ public class MyDodo extends Dodo
     }
 
     public void act() {  
-
+       
     }
 
 
@@ -34,6 +34,9 @@ public class MyDodo extends Dodo
         }
     }
     
+    /**
+     * Moves one cell backword from current direction
+     */
     public void OneCellBackwards(){
         turnAround();
         move();
@@ -59,6 +62,11 @@ public class MyDodo extends Dodo
         }
     }
     
+    /**
+     * Moves around ONE fence
+     * 
+     * <P> if it runs into a fence while climbing over one it will brake it is made for ONE fence
+     */
     public void climbOverFence(){
         turnLeft();
         move();
@@ -69,6 +77,10 @@ public class MyDodo extends Dodo
         turnLeft();
     }
     
+    
+    /**
+     * checks if there is a grain infront of it
+     */
     public boolean grainAhead(){
         move();
         if(onGrain()){
@@ -142,18 +154,42 @@ public class MyDodo extends Dodo
         }
     }
     
+     /**
+     * Walks to edge of the world in front of it
+     * 
+     * <p> Initial: Dodo is on West side of world facing East.
+     * <p> Final:   Dodo is on East side of world facing East.
+     *
+     */
+    
       public void walkToWorldEdge( ){
         while( ! borderAhead() ){
             move();
         }
     }
     
+    /**
+     * Walks to edge of the world behind it
+     * 
+     * <p> Initial: Dodo is on East side of world facing East.
+     * <p> Final:   Dodo is on West side of world facing East.
+     *
+     */
     public void goBackToStartOfRowAndFaceBack(){
         turnAround();
         walkToWorldEdge();
         turnAround();
     }
     
+    /**
+     * Walks to edge of the world in front of it walking around fences
+     * 
+     * <p> Initial: Dodo is on West side of world facing East.
+     * <p> Final:   Dodo is on East side of world facing East.
+     * 
+     * <p> running into a fence wil start climbOverFence() with the catch of it braking if running into a fence while cimbing over one.
+     *
+     */
     public void walkToWorldEdgeClimbingOverFences(){
          while( ! borderAhead() ){
             if(fenceAhead()){
@@ -163,6 +199,17 @@ public class MyDodo extends Dodo
         }
     }
     
+    /**
+     * Walks to edge of the world in front of it walking around fences stops at nest
+     * 
+     * <p> Initial: Dodo is on West side of world facing East.
+     * <p> Final:   Dodo is on East side of world facing East.
+     * 
+     * <p> running into a fence wil start climbOverFence() with the catch of it braking if running into a fence while cimbing over one.
+     * 
+     * <p> same a walkToWorldEdgeClimbingOverFences() but stops at nest.
+     *
+     */
     public void walkToNestClimbingOverFences(){
          while( ! onNest() && ! borderAhead()){
             if(fenceAhead()){
@@ -181,6 +228,15 @@ public class MyDodo extends Dodo
         }
     }
     
+     /**
+     * Walks to edge of the world printing the coordinates at each step and pick up all the grain
+     * 
+     * <p> Initial: Dodo is on West side of world facing East.
+     * <p> Final:   Dodo is on East side of world facing East.
+     *              Coordinates of each cell printed in the console.
+     *              all grain found on the way is picked up.
+     */
+    
     public void pickUpGrainAndPrintCoordinates(){
         while( ! borderAhead() ){
             // print coordinates
@@ -192,6 +248,14 @@ public class MyDodo extends Dodo
             move();
         }
     }
+    
+    /**
+     * Walks to edge of the world printing the coordinates at each step
+     * 
+     * <p> Initial: Dodo is on West side of world facing East.
+     * <p> Final:   Dodo is on East side of world facing East.
+     *              all nest it ran into have an egg in it.
+     */
     
     public void walkToWorldEdgeNoEmptyNest(){
         //if u start on a nest lay an egg 
@@ -209,9 +273,9 @@ public class MyDodo extends Dodo
     }
     
     /**
-     * walk around the fences
+     * walk around the fences it wil stop at an egg
      * 
-     * 
+     * <p> it will follow the left side if there are more boxes next to it
      */
     
     public void walkAroundFences(){
@@ -221,16 +285,16 @@ public class MyDodo extends Dodo
         turnLeft();
         if(fenceAhead()){
             fenceSide = 1;
+            
+        }else{
+            turnRight();
+            if(fenceAhead()){
+                fenceSide = 2;
+            }
+            turnLeft();
         }
-        turnAround();
-        if(fenceAhead()){
-            fenceSide = 2;
-        }
-        
-        turnLeft();
         
         // move
-        
         if(fenceSide != 0){
             while(!onEgg()){
                 if(fenceAhead()){
@@ -262,7 +326,13 @@ public class MyDodo extends Dodo
         
     }
     
-        public void solveSolidMaze(){
+    
+      /**
+     * solf any solid maze
+     * 
+     * <p> its the same a walkAroundFences() but it stop at een nest
+     */
+    public void solveSolidMaze(){
         int fenceSide = 0; // 0 is no fence 1 is left and 2 is richt
         
         // check if there is a fence and witch side
@@ -309,6 +379,13 @@ public class MyDodo extends Dodo
         }
         
     }
+    /**
+     * it wil follow a trail of eggs and stop at a nest
+     * 
+     * <p> if there is a egg infornt of it wil move to it 
+     * <p> if there is no egg infront of it the dodo wil check Right for an egg
+     * <p> if there is no egg to the right it wil turn around and check the left side.
+     */
     
     public void eggTrailToNest(){
         while(!onNest()){
