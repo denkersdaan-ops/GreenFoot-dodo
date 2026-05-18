@@ -440,4 +440,14 @@ public class MyDodo extends Dodo
         turnRight();
         turnRight();
     }
+    
+    
+     /**
+     * keeps turning right until facing east
+     */
+    public void faceEast(){
+        while(getDirection() != 1){
+            turnRight();
+        }
+    }
 }
