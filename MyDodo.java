@@ -450,4 +450,25 @@ public class MyDodo extends Dodo
             turnRight();
         }
     }
+    
+    /**
+     * move to the set location
+     * 
+     * <p> it wil turn even if he is alread on the location but jumbing 0 is the same position
+     */
+    public void goToLocation(int x, int y){
+        int changeX = getX() - x;
+        int changeY = getY() - y;
+        
+        // ternary operator omdat ik geen zin heb om een voledige if else te maken.
+        
+        setDirection((changeX < 0) ? 1  : 3);
+        
+        jump((changeX > 0) ? changeX : changeX*-1);
+        
+        setDirection((changeY < 0) ? 2  : 0);
+        
+        jump((changeY > 0) ? changeY : changeY*-1);
+    }
+    
 }
