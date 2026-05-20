@@ -135,8 +135,24 @@ public class MyDodo extends Dodo
         }
     }
 
-    
-    
+      /**
+     * Move given number of cells forward in the current direction and lay eggs on the cells.
+     * 
+     * <p> Initial:   
+     * <p> Final:  
+     * 
+     * @param   int n: the number of steps made
+     */
+    public void layTrailOfEggs( int n ) {
+        int nrStepsTaken = 0;               // set counter to 0
+        while ( nrStepsTaken < n ) { // check if more steps must be taken  
+            move();                         // take a step
+            if(canLayEgg()){
+                layEgg();
+            }
+            nrStepsTaken++;                 // increment the counter
+        }
+    }
     
     /**
      * Walks to edge of the world printing the coordinates at each step
