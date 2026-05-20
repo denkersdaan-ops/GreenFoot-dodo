@@ -617,6 +617,9 @@ public class MyDodo extends Dodo
         return true;
     }
     
+    /**
+     * makes a monument of eggs that becomes bigger with 1 width per row.
+     */
     public void makeMonument(){
         setDirection(1);
         
@@ -637,6 +640,9 @@ public class MyDodo extends Dodo
         }
     }
     
+     /**
+     * makes a monument of eggs that becomes bigger by multipling the width times 2 per row.
+     */
     public void makeStevigMonument(){
         setDirection(1);
         
@@ -653,7 +659,7 @@ public class MyDodo extends Dodo
             if(borderAhead()) break; // yes no {} i? lazy
             move();
             turnLeft();
-            width *=    2;
+            width *= 2;
         }
     }
 }
