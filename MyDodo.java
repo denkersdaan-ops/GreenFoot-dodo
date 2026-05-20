@@ -636,4 +636,24 @@ public class MyDodo extends Dodo
             width++;
         }
     }
+    
+    public void makeStevigMonument(){
+        setDirection(1);
+        
+        int width = 1;
+        boolean workSpace = true;
+        while(workSpace){
+            layEgg();
+            layTrailOfEggs(width - 1);
+            if(borderAhead()) workSpace = false;
+            
+            turnAround();
+            jump(width - 1);
+            turnLeft();
+            if(borderAhead()) break; // yes no {} i? lazy
+            move();
+            turnLeft();
+            width *=    2;
+        }
+    }
 }
