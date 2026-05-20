@@ -662,4 +662,30 @@ public class MyDodo extends Dodo
             width *= 2;
         }
     }
+    
+     /**
+     * makes a piramid with eggs;
+     */
+    public void makePiramide (){
+        setDirection(1);
+        
+        int width = 1;
+        boolean workSpace = true;
+        while(workSpace){
+            layEgg();
+            layTrailOfEggs(width - 1);
+            if(borderAhead()) workSpace = false;
+            
+            turnAround();
+            jump(width -1);
+            turnLeft();
+            if(borderAhead()) break; // yes no {} i? lazy
+            move();
+            turnRight();
+            if(borderAhead()) break;
+            move();
+            turnAround();
+            width += 2;
+        }
+    }
 }
