@@ -134,6 +134,38 @@ public class MyDodo extends Dodo
             System.out.println("moved "+ nrStepsTaken);
         }
     }
+    
+     /**
+     * look at all cells add the sum of the eggs per row to the total
+     */
+    public void scanWorldForAllEggs(){
+        int startX = getX();
+        int startY = getY();
+        
+        int totalEggs = 0;
+        
+        goToLocation(0, 0);
+        setDirection(1);
+        
+        int row = 0;
+        
+        while(row <= getWorld().getHeight() - 2){
+            totalEggs += countEggsInRow();
+            row++;
+            turnRight();
+            move();
+            turnLeft();
+        }
+        
+        totalEggs += countEggsInRow();
+        
+        showCompliment("total eggs: " + totalEggs);
+        
+         goToLocation(startX, startY);
+        
+    }
+    
+    }
 
       /**
      * Move given number of cells forward in the current direction and lay eggs on the cells.
@@ -294,7 +326,7 @@ public class MyDodo extends Dodo
      *              count all eggs it ran into and shows it.
      */
     
-    public void countEggsInRow(){
+    public int countEggsInRow(){
         int eggCount = 0;
         
         int x = getX();
@@ -311,7 +343,7 @@ public class MyDodo extends Dodo
         }
         goToLocation(x, y);
         setDirection(dir);
-        showCompliment("" + eggCount);     
+        return eggCount;
     }
     
     /**

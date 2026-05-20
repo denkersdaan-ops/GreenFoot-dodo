@@ -36,6 +36,12 @@ C:\Users\Denke\OneDrive - ROC Nijmegen\school werk\DodoScenario1\DodoScenario1\M
 C:\Users\Denke\OneDrive - ROC Nijmegen\school werk\DodoScenario1\DodoScenario1\MyDodo.java:127: warning: @param argument "int" is not a parameter name.
      * @param   int distance: the number of steps made
        ^
+C:\Users\Denke\OneDrive - ROC Nijmegen\school werk\DodoScenario1\DodoScenario1\MyDodo.java:173: warning: @param argument "boolean" is not a parameter name.
+     * @param  boolean findFirst: true is grab the first best, false is grab the lest best
+       ^
+C:\Users\Denke\OneDrive - ROC Nijmegen\school werk\DodoScenario1\DodoScenario1\MyDodo.java:230: warning: @param argument "int" is not a parameter name.
+     * @param   int n: the number of steps made
+       ^
 Generating C:\Users\Denke\OneDrive - ROC Nijmegen\school werk\DodoScenario1\DodoScenario1\doc\package-summary.html...
 Generating C:\Users\Denke\OneDrive - ROC Nijmegen\school werk\DodoScenario1\DodoScenario1\doc\index.html...
-4 warnings
+6 warnings
