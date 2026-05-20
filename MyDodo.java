@@ -165,6 +165,60 @@ public class MyDodo extends Dodo
         
     }
     
+    /**
+     * scans the word for the row with the most eggs.
+     * 
+     * <p> if the most amount of rows has the same ammount it wil grab the first or last debending on findFirst
+     *
+     * @param  boolean findFirst: true is grab the first best, false is grab the lest best
+     */
+    
+    public void scanWorldForBestRow(boolean findFirst){
+        int startX = getX();
+        int startY = getY();
+        
+        int bestRow = 0;
+        int bestEggs = 0;
+        
+        goToLocation(0, 0);
+        setDirection(1);
+        
+        int row = 0;
+        
+        while(row <= getWorld().getHeight() - 2){
+            if(findFirst){
+                if(bestEggs < countEggsInRow()){
+                    bestEggs = countEggsInRow();
+                    bestRow = row;
+                }
+            }else{
+                if(bestEggs <= countEggsInRow()){
+                    bestEggs = countEggsInRow();
+                    bestRow = row;
+                } 
+            }
+            row++;
+            turnRight();
+            move();
+            turnLeft();
+        }
+        
+        if(findFirst){
+                if(bestEggs < countEggsInRow()){
+                    bestEggs = countEggsInRow();
+                    bestRow = row;
+                }
+            }else{
+                if(bestEggs <= countEggsInRow()){
+                    bestEggs = countEggsInRow();
+                    bestRow = row;
+                } 
+            }
+        
+        showCompliment("best ammout: " + bestEggs + " at row: " + bestRow);
+        
+         goToLocation(startX, startY);
+        
     }
 
       /**
