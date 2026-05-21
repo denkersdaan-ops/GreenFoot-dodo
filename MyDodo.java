@@ -138,7 +138,7 @@ public class MyDodo extends Dodo
      /**
      * look at all cells add the sum of the eggs per row to the total
      */
-    public void scanWorldForAllEggs(){
+    public int scanWorldForAllEggs(){
         int startX = getX();
         int startY = getY();
         
@@ -161,7 +161,9 @@ public class MyDodo extends Dodo
         
         showCompliment("total eggs: " + totalEggs);
         
-         goToLocation(startX, startY);
+        goToLocation(startX, startY);
+         
+        return totalEggs;
         
     }
     
@@ -398,6 +400,10 @@ public class MyDodo extends Dodo
         goToLocation(x, y);
         setDirection(dir);
         return eggCount;
+    }
+    
+    public double averigeEggsForAllRows(){
+        return (double) scanWorldForAllEggs() / getWorld().getHeight();
     }
     
     /**
