@@ -144,14 +144,10 @@ public class MyDodo extends Dodo
         
         int totalEggs = 0;
         
-        goToLocation(0, 0);
-        setDirection(1);
-        
-        int row = 0;
-        
-        while(row <= getWorld().getHeight() - 2){
+        startPosition();
+            
+        for(int row = 0; row <= getWorld().getHeight() - 2; row++){
             totalEggs += countEggsInRow();
-            row++;
             turnRight();
             move();
             turnLeft();
@@ -182,8 +178,7 @@ public class MyDodo extends Dodo
         int bestRow = 0;
         int bestEggs = 0;
         
-        goToLocation(0, 0);
-        setDirection(1);
+        startPosition();
         
         int row = 0;
         
@@ -458,6 +453,48 @@ public class MyDodo extends Dodo
             }
         }
         
+    }
+    
+    public void pariteitsbitAlgorithem(){
+        startPosition();
+        
+        
+        for(int row = 0; row <= getWorld().getHeight() -1; row++){
+            if(countEggsInRow()%2 != 0){
+                walkToWorldEdge();
+                layGoldenEgg();
+                goBackToStartOfRowAndFaceBack();
+            }
+            
+            turnRight();
+            if(!borderAhead()){
+                move();
+                turnLeft();
+            }
+        }
+        
+        startPosition();
+        
+        turnRight();
+        
+        for(int column = 0; column <= getWorld().getHeight() -1; column++){
+            if(countEggsInRow()%2 != 0){
+                walkToWorldEdge();
+                layGoldenEgg();
+                goBackToStartOfRowAndFaceBack();
+            }
+            
+            turnLeft();
+            if(!borderAhead()){
+                move();
+                turnRight();
+            } 
+        }
+    }
+    
+    private void startPosition(){
+        goToLocation(0, 0);
+        setDirection(1);
     }
     
     
