@@ -112,5 +112,26 @@ public class SurpriseEgg extends Egg
             System.out.println("there are no eggs");
         }
     }
+    
+    public void vindBestEgg(){
+        if(generatedEggs != null){
+            List<Egg> bestEggs = new ArrayList<Egg>();
+            for(Egg egg : generatedEggs){
+                System.out.println(egg.getX() + " : " + egg.getY() +" : Value = " + egg.getValue());
+                if(bestEggs.size() == 0){
+                    bestEggs.add(egg);
+                }else if(egg.getValue() > bestEggs.get(0).getValue()){
+                    bestEggs.clear();
+                    bestEggs.add(egg);
+                }else if(egg.getValue() == bestEggs.get(0).getValue()){
+                    bestEggs.add(egg);
+                }
+               
+            }
+            for(Egg egg : bestEggs){
+                 System.out.println("best Egg is on " + egg.getX() + " : " + egg.getY() + " with the value of " + egg.getValue());
+            }
+        }
+    }
 
 }
