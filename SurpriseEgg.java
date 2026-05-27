@@ -133,5 +133,18 @@ public class SurpriseEgg extends Egg
             }
         }
     }
+    
+      public double averigeOfSurpriseEggs(){
+        if(generatedEggs != null){
+            double sum = 0;
+            for(Egg egg : generatedEggs){
+                System.out.println(egg.getX() + " : " + egg.getY() +" : Value = " + egg.getValue());
+                sum += egg.getValue();
+            }
+            return sum / generatedEggs.size();
+        }
+        
+        return 0;
+    }
 
 }
